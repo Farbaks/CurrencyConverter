@@ -1,0 +1,130 @@
+@import "variables";
+
+.widget {
+    width: 100%;
+    min-height: 350px;
+    margin-top: 40px;
+    border-radius: 10px;
+    background: #FFF;
+    content: '';
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 60px 40px;
+    @media screen and (max-width: 675px) {
+        padding: 40px 20px;
+    }
+    .converter {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 1024px) {
+            flex-flow: column;
+            justify-content: center;
+        }
+        .converter-item {
+            display: flex;
+            align-items: stretch;
+            @media screen and (max-width: 1024px) {
+                width: 100%;
+            }
+            .amount {
+                border: solid 1.5px $green-2;
+                border-right: none;
+                border-radius: 10px 0 0 10px;
+                padding: 15px;
+                @media screen and (max-width: 1024px) {
+                    flex-grow: 1;
+                }
+                
+                p {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $black-2;
+                }
+
+                input {
+                    width: 100%;
+                    border: none;
+                    font-size: 35px;
+                    font-weight: 600;
+                    color: $black-1;
+                    outline: none;
+                    background: transparent;
+                    -moz-appearance: textfield;
+                    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                    @media screen and (max-width: 675px) {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .select {
+                position: relative;
+
+                p {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 20px;
+                    background: $green-1;
+                    border-radius: 0 10px 10px 0;
+                    font-size: 35px;
+                    font-weight: 500;
+                    color: $black-1;
+                    cursor: pointer;
+                    @media screen and (max-width: 675px) {
+                        font-size: 20px;
+                        padding: 10px 15px;
+                    }
+                    .icon {
+                        width: 30px;
+                        margin-right: 5px;
+                        @media screen and (max-width: 675px) {
+                            width: 20px;
+                        }
+                    }
+                    .arrow {
+                        width: 15px;
+                        margin-left: 20px;
+                    }
+                }
+
+                select {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+            }
+        }
+        .convert-icon {
+            width: 30px;
+            margin: 0 20px;
+            @media screen and (max-width: 1024px) {
+                margin: 20px 0;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .details {
+        margin-top: 40px;
+        h4 {
+            font-size: 20px;
+            font-weight: 450;
+            color: $black-1;
+        }
+        h5 {
+            font-size: 14px;
+            font-weight: 450;
+            color: $black-2;
+            margin-top: 10px;
+        }
+    }
+}
