@@ -13,6 +13,19 @@
     padding: 40px 20px;
   }
 }
+.widget .errorMessage {
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  margin-bottom: 10px;
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px 15px;
+  background: #fee1dd;
+  border-radius: 4px;
+  display: none;
+}
 .widget .converter {
   width: 100%;
   display: flex;
@@ -26,6 +39,7 @@
   }
 }
 .widget .converter .converter-item {
+  width: 50%;
   display: flex;
   align-items: stretch;
 }
@@ -39,13 +53,14 @@
   border-right: none;
   border-radius: 10px 0 0 10px;
   padding: 15px;
+  flex-grow: 1;
 }
 @media screen and (max-width: 1024px) {
   .widget .converter .converter-item .amount {
     flex-grow: 1;
   }
 }
-.widget .converter .converter-item .amount p {
+.widget .converter .converter-item .amount label {
   font-size: 14px;
   font-weight: 400;
   color: #536878;
@@ -72,7 +87,7 @@
 .widget .converter .converter-item .select {
   position: relative;
 }
-.widget .converter .converter-item .select p {
+.widget .converter .converter-item .select label {
   height: 100%;
   display: flex;
   align-items: center;
@@ -85,21 +100,21 @@
   cursor: pointer;
 }
 @media screen and (max-width: 675px) {
-  .widget .converter .converter-item .select p {
+  .widget .converter .converter-item .select label {
     font-size: 20px;
     padding: 10px 15px;
   }
 }
-.widget .converter .converter-item .select p .icon {
+.widget .converter .converter-item .select label .icon {
   width: 30px;
   margin-right: 5px;
 }
 @media screen and (max-width: 675px) {
-  .widget .converter .converter-item .select p .icon {
+  .widget .converter .converter-item .select label .icon {
     width: 20px;
   }
 }
-.widget .converter .converter-item .select p .arrow {
+.widget .converter .converter-item .select label .arrow {
   width: 15px;
   margin-left: 20px;
 }

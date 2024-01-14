@@ -91,8 +91,31 @@ class CurrencyConverter {
         document.getElementById('timestamp').innerText = ukDateString;
     }
 
+    InputIsValid(input) {
+        const value = parseInt(input.value, 10);
+        return !(isNaN(value) || value < 0 || value > 999999);
+    }
+
+    showErrorMessage() {
+        document.getElementById("errorMessage").style.display = "block";
+        document.getElementById("errorMessage").innerText = "Invalid Source Input. Should be between 0 and 999,999";
+        setTimeout(() => {
+            document.getElementById("errorMessage").style.display = "none";
+        }, 10000);
+    }
+
+    hideErrorMessage() {
+        document.getElementById("errorMessage").style.display = "none";
+    }
+
     calculateExchangeRate(type) {
         if (type == 'source') {
+            if (!this.InputIsValid(this.sourceCurrencyValueEl)) {
+                this.showErrorMessage();
+                this.destinationCurrencyValueEl.value = '';
+                return;
+            }
+            this.hideErrorMessage();
             this.destinationCurrencyValueEl.value = (this.sourceCurrencyValueEl.value * this.destinationCurrencyRate.rate).toFixed(3);
             return;
         }

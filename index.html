@@ -5,7 +5,11 @@
     <meta charset="utf-8">
     <title>Currency Converter</title>
     <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#57ad8e">
+    <meta name="description" content="This is a currency converter.">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -26,6 +30,18 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/widget.css">
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/scripts/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+
 </head>
 
 <body>
@@ -39,36 +55,37 @@
         <h3 class="subtitle">Check live foreign currency exhcange rates</h3>
 
         <section class="widget">
+            <p class="errorMessage" id="errorMessage"></p>
             <div class="converter">
                 <div class="converter-item">
                     <div class="amount">
-                        <p>You Have</p>
-                        <input type="number" id="sourceCurrencyValue">
+                        <label for="sourceCurrencyValue">You Have (Maximum of 6 digits)</label>
+                        <input type="number" maxlength="6" min="0" max="999999" name="sourceCurrencyValue" id="sourceCurrencyValue">
                     </div>
                     <div class="select">
-                        <p>
-                            <img class="icon" id="sourceCurrencyFlag" src="https://flagcdn.com/us.svg" />
+                        <label for="sourceCurrency">
+                            <img class="icon" id="sourceCurrencyFlag" src="https://flagcdn.com/us.svg" alt="source flag icon" />
                             <span id="sourceCurrencyCode">USD</span>
-                            <img class="arrow" src="assets/images/chevron-down.svg" />
-                        </p>
-                        <select id="sourceCurrency"></select>
+                            <img class="arrow" src="assets/images/chevron-down.svg" alt="source arrow down icon" />
+                        </label>
+                        <select name="sourceCurrency" id="sourceCurrency"></select>
                     </div>
                 </div>
                 <div class="convert-icon">
-                    <img src="assets/images/arrows-left-right.svg" />
+                    <img src="assets/images/arrows-left-right.svg" alt="conversion icon" />
                 </div>
                 <div class="converter-item">
                     <div class="amount">
-                        <p>Converted to</p>
-                        <input type="number" id="destinationCurrencyValue">
+                        <label for="destinationCurrencyValue">Converted to</label>
+                        <input type="number" name="destinationCurrencyValue" id="destinationCurrencyValue">
                     </div>
                     <div class="select">
-                        <p>
-                            <img class="icon" id="destinationCurrencyFlag" src="https://flagcdn.com/gb.svg" />
+                        <label for="destinationCurrency">
+                            <img class="icon" id="destinationCurrencyFlag" src="https://flagcdn.com/gb.svg" alt="destination flag icon" />
                             <span id="destinationCurrencyCode">GBP</span>
-                            <img class="arrow" src="assets/images/chevron-down.svg" />
-                        </p>
-                        <select id="destinationCurrency"></select>
+                            <img class="arrow" src="assets/images/chevron-down.svg" alt="source arrow down icon" />
+                        </label>
+                        <select name="destinationCurrency" id="destinationCurrency"></select>
                     </div>
                 </div>
             </div>
@@ -86,6 +103,7 @@
 
     <!-- Script -->
     <script src="scripts/index.js"></script>
+    <script src="scripts/service-worker.js"></script>
 </body>
 
 </html>
